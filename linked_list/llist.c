@@ -34,4 +34,41 @@ void llist_debug(TList *list)
 
 void llist_append(TList *list, int data)
 {
+    struct t_node *node = create_node(data);
+
+    if( list->first == NULL ) {
+        list->first = node;
+        list->last = node;
+    } else {
+        list->last->next = node;
+        list->last = node;
+    }
+}
+
+int llist_len(TList *list)
+{
+    int len = 0;
+    struct t_node *temp = list->first;
+
+    while( temp != NULL )
+    {
+        len += 1;
+        temp = temp->next;
+    }
+    return len;
+}
+
+void llist_destroy(TList *list)
+{
+    struct t_node *current_node = list->first;
+    struct t_node *next;
+
+    while( current_node != NULL )
+    {
+        next = current_node->next;
+        free(current_node);
+        current_node = next;
+    }
+
+    free(list);
 }

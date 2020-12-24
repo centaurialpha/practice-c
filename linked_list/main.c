@@ -4,19 +4,15 @@
 int main()
 {
     TList *lista = llist_new();
+    printf("LEN=%d\n", llist_len(lista));
 
-    struct t_node *n1 = create_node(2);
-    struct t_node *n2 = create_node(4);
-    struct t_node *n3 = create_node(9);
-    struct t_node *n4 = create_node(29);
-
-    n1->next = n2;
-    n2->next = n3;
-    n3->next = n4;
-
-    lista->first = n1;
-    lista->last = n4;
-
+    llist_append(lista, 2);
+    llist_append(lista, 4);
+    llist_append(lista, 9);
+    llist_append(lista, 29);
     llist_debug(lista);
+    printf("\nLEN=%d\n", llist_len(lista));
+
+    llist_destroy(lista);
     return 0;
 }

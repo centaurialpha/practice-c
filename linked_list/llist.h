@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,5 +18,7 @@ TList *llist_new();
 struct t_node *create_node(int);
 void llist_append(TList *, int);
 void llist_debug(TList *);
+int llist_len(TList *);
+void llist_destroy(TList *);
 
 #endif
