@@ -45,6 +45,19 @@ void llist_append(TList *list, int data)
     }
 }
 
+void llist_prepend(TList *list, int data)
+{
+    struct t_node *node = create_node(data);
+
+    if( list->first == NULL ) {
+        list->first = node;
+        list->last = node;
+    } else {
+        node->next = list->first;
+        list->first = node;
+    }
+}
+
 int llist_len(TList *list)
 {
     int len = 0;
