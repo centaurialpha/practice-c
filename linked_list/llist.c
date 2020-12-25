@@ -58,6 +58,28 @@ void llist_prepend(TList *list, int data)
     }
 }
 
+void llist_insert(TList *list, int index, int data)
+{
+    struct t_node *node = create_node(data);
+    struct t_node *current_node = list->first;
+    struct t_node *previous_node;
+    int pos = 0;
+
+    while( current_node != NULL )
+    {
+        if( pos == index - 1)
+            previous_node = current_node;
+        if( pos == index )
+            break;
+
+        pos += 1;
+        current_node = current_node->next;
+    }
+
+    node->next = current_node;
+    previous_node->next = node;
+}
+
 int llist_len(TList *list)
 {
     int len = 0;
